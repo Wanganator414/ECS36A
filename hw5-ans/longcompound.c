@@ -34,7 +34,7 @@ struct compoundStruct /*Custom structure to hold a lot of elements and the amoun
     struct element elements[118];
 };
 
-struct chemArray getInput(int argc, char **argv)
+struct chemArray getInput(int argc, char **argv)      /*Method to parse user input and catagories each element and its quantity*/
 {
     struct chemArray arr;
 
@@ -45,7 +45,7 @@ struct chemArray getInput(int argc, char **argv)
     line = 0;
 
     tempNum = 0;
-    
+
     FILE *fileStream;
 
     fileStream = fopen(argv[argc - 1], "rw");
@@ -83,15 +83,13 @@ struct chemArray getInput(int argc, char **argv)
 struct compoundStruct breakDown(struct chemArray dict, char *compound)
 {
     struct compoundStruct returnValue;
-    int num_elements = 100;
-    int num_elements_sub = 50;
-    int j = 0;
+    int j;
+    int i;
+    i = 0;
+    j = 0;
 
     /*strtok()*/
-    int i = 0;
-    j = 0;
     int len = strlen(compound); /*Length of compound not adjusted for index*/
-    char *holder;
 
     if (DEBUG)
     {
@@ -255,28 +253,35 @@ struct compoundStruct breakDown(struct chemArray dict, char *compound)
     return returnValue;
 }
 
-void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName)
+void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName)  /*Takes in custom struct and evaluates the atomic weights based on the amount of elements present*/
 {
     if (invalidInput)
     {
         exit;
     }
 
-    int i = 0;
-    int j = 0;
-    double totalWeight = 0.00;
-    int indLeng = returnIndex;
-    int indLeng2 = returnIndex;
-    int *elementIndexHolder = malloc(indLeng * sizeof(int));
+    int i;
+    int j;
+    double totalWeight;
+    int indLeng;
+    int indLeng2;
+    int *elementIndexHolder; 
 
-    if (elementIndexHolder == NULL)
+    i = 0;
+    j = 0;
+    totalWeight = 0.00;
+    indLeng = returnIndex;
+    indLeng2 = returnIndex;
+    elementIndexHolder = malloc(indLeng * sizeof(int));
+
+    if (elementIndexHolder == NULL) /*Print error if malloc fails somehow*/
     {
         printf("%d Error in malloc!\n", indLeng);
         return 1;
     }
 
     int validElement = 0;
-    for (; i < indLeng; i++)
+    for (; i < indLeng; i++)    /*Loop through each element and add weight if needed*/
     {
         if (DEBUG)
         {

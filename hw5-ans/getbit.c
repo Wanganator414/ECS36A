@@ -55,7 +55,18 @@ int main(void)
 			continue;
 		}
 		/* print the result */
-		printf("%d\n", (n>>bpos)&1);	/*Original code printed entire new right shifted number, rather than the desired bit. By adding binary '&' operator with 1, you can get the desired bit*/
+		printf("%d\n", (n>>bpos)&1);	
+		/*Original code printed entire new right shifted number, rather than the desired bit. By adding binary '&' operator with 1, you can get the desired bit
+		Example: User enters #4 and wants 3rd digit.
+
+		0000 0100 is binary 4
+			>> right shift by 3
+		0000 0000
+			&
+		0000 0001   is  binary 1
+
+		0 and 1 would result in 0, so 0 is returned given the user input.
+		*/
 	}
 
 	/*

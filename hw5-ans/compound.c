@@ -30,7 +30,7 @@ struct compoundStruct /*Custom structure to hold a lot of elements and the amoun
     struct element elements[118];
 };
 
-struct chemArray getInput(int argc, char **argv)    /*Method to process user input and organize the information into previously declared structs*/
+struct chemArray getInput(int argc, char **argv) /*Method to process user input and organize the information into previously declared structs*/
 {
     struct chemArray arr;
 
@@ -69,7 +69,7 @@ struct chemArray getInput(int argc, char **argv)    /*Method to process user inp
     return arr;
 }
 
-struct compoundStruct breakDown(struct chemArray dict, char *compound)  /*Method to take */
+struct compoundStruct breakDown(struct chemArray dict, char *compound) /*Method to take */
 {
     struct compoundStruct returnValue;
     int i;
@@ -239,8 +239,7 @@ struct compoundStruct breakDown(struct chemArray dict, char *compound)  /*Method
     return returnValue;
 }
 
-
-void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName)  /*Takes in custom struct and calculates weight value based on quantity of individual elements in a compound*/
+void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName) /*Takes in custom struct and calculates weight value based on quantity of individual elements in a compound*/
 {
     if (invalidInput)
     {
@@ -251,7 +250,7 @@ void getWeight(struct compoundStruct compound, struct chemArray info, char **com
     double totalWeight = 0.00;
     int indLeng = returnIndex;
     int validElement = 0;
-    for (; i < indLeng; i++)    /*Keep checking until the amount of individual elements in the compound runs out*/
+    for (; i < indLeng; i++) /*Keep checking until the amount of individual elements in the compound runs out*/
     {
         if (DEBUG)
         {
