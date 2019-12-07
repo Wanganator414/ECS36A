@@ -3,8 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 #define DEBUG 0
-int returnIndex = 0;
-int invalidInput = 0;
+
+int returnIndex;
+int invalidInput;
+
+returnIndex = 0;
+invalidInput = 0;
 
 struct chemical /*Data structure to store info on an element's atomic weight*/
 {
@@ -34,6 +38,14 @@ struct chemArray getInput(int argc, char **argv)
 {
     struct chemArray arr;
 
+    int line;
+
+    int tempNum;
+
+    line = 0;
+
+    tempNum = 0;
+    
     FILE *fileStream;
 
     fileStream = fopen(argv[argc - 1], "rw");
@@ -43,8 +55,6 @@ struct chemArray getInput(int argc, char **argv)
         perror(argv[argc - 1]);
         exit(EXIT_FAILURE);
     }
-    int line = 0;
-    int tempNum = 0;
 
     while ((tempNum = fscanf(fileStream, "%lf\t%s\t%s", &arr.elements[line].weight, &arr.elements[line].symbol, &arr.elements[line].name)) != EOF) /*'%*s' ignores last item in input and moves file pointer forward*/
     {
@@ -238,7 +248,7 @@ struct compoundStruct breakDown(struct chemArray dict, char *compound)
         }
         else
         {
-            fprintf(stderr,"%s Invalid Input\n", compound[0]);
+            fprintf(stderr, "%s Invalid Input\n", compound[0]);
             exit(EXIT_FAILURE);
         }
     }
@@ -261,7 +271,7 @@ void getWeight(struct compoundStruct compound, struct chemArray info, char **com
 
     if (elementIndexHolder == NULL)
     {
-        printf("%d Error in malloc!\n",indLeng);
+        printf("%d Error in malloc!\n", indLeng);
         return 1;
     }
 

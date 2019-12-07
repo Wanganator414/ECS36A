@@ -239,7 +239,8 @@ struct compoundStruct breakDown(struct chemArray dict, char *compound)  /*Method
     return returnValue;
 }
 
-void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName)
+
+void getWeight(struct compoundStruct compound, struct chemArray info, char **compoundName)  /*Takes in custom struct and calculates weight value based on quantity of individual elements in a compound*/
 {
     if (invalidInput)
     {
@@ -250,7 +251,7 @@ void getWeight(struct compoundStruct compound, struct chemArray info, char **com
     double totalWeight = 0.00;
     int indLeng = returnIndex;
     int validElement = 0;
-    for (; i < indLeng; i++)
+    for (; i < indLeng; i++)    /*Keep checking until the amount of individual elements in the compound runs out*/
     {
         if (DEBUG)
         {
@@ -292,7 +293,7 @@ void getWeight(struct compoundStruct compound, struct chemArray info, char **com
     returnIndex = 0;
 }
 
-int main(int argc, char **argv)
+int main(int argc, char **argv) /*Main driver to call previously created functions*/
 {
     int bufsize;
     char *compound;

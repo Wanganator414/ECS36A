@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**","D:\\MinGW\\include"
+                "${workspaceFolder}/**",
+                "D:\\MinGW\\include\\",
+                "D:\\MinGW\\lib\\gcc\\mingw32\\6.3.0\\include"
             ],
             "defines": [
                 "_DEBUG",
@@ -11,7 +13,8 @@
                 "_UNICODE"
             ],
             "intelliSenseMode": "gcc-x64",
-            "compilerPath": "D:/MinGW/bin/gcc.exe"
+            "compilerPath": "D:/MinGW/bin/gcc.exe",
+            "cStandard": "c99"
         }
     ],
     "version": 4
