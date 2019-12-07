@@ -17,7 +17,7 @@
 2. *(10 points)* Give a Linux command to print dictionary words that contain the vowels `‘a’, ‘e’, ‘i’, ‘o’, ‘u’, and ‘y’`
 in that order. Show your output.
 
-    By using the command sequence `grep .*a.*e.*i.*o.*u.*y words` you would find the word:
+    By using the command sequence `grep .*a.*e.*i.*o.*u.*y /usr/share/dict/words` you would find the word:
             
         facetiously
 
